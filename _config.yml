@@ -1,0 +1,11 @@
+# Site settings
+title: Your awesome title
+email: your-email@domain.com
+description: > # test
+baseurl: ""
+url: "http://tannerperrien.com"
+github_username:  tannerperrien
+
+# Build settings
+highlighter: pygments
+markdown: redcarpet
