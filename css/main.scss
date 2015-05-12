@@ -7,6 +7,10 @@ $color_purple_100: #6B4C95;
 $color_blue_100: #295FDC;
 $color_black_90: #1C0C31;
 
+html {
+  height: 100%;
+}
+
 body {
   min-height: 100%;
   font-family: 'Merriweather Sans', sans-serif;
@@ -78,6 +82,10 @@ blockquote {
 
 blockquote p {
     font-weight: 300;
+}
+
+pre {
+  word-break: break-word;
 }
 
 pre code {
