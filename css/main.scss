@@ -3,50 +3,90 @@
 ---
 @charset "utf-8";
 
+$color_purple_100: #6B4C95;
+$color_blue_100: #295FDC;
+$color_black_90: #1C0C31;
 
-
-// Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
-
-$spacing-unit:     30px;
-
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
-
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
-
-// Width of the content area
-$content-width:    800px;
-
-$on-palm:          600px;
-$on-laptop:        800px;
-
-
-
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+body {
+  min-height: 100%;
+  font-family: 'Merriweather Sans', sans-serif;
+  background: #fff;
 }
 
+a, a span {
+  -webkit-transition: color .3s ease-in-out;
+  -moz-transition: color .3s ease-in-out;
+  -o-transition: color .3s ease-in-out;
+  transition: color .3s ease-in-out;
+}
 
+a:hover {
+  color: $color_purple_100;
+}
+
+header {
+    padding: 16px;
+    color: #eee;
+}
+
+header h1 {
+    font-size: 50px;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+header h1 a {
+  color: #1C0C31;
+}
+
+header h1 a:hover {
+  text-decoration: none;
+}
+
+header ul {
+    padding: 20px 0 0 0;
+}
+
+header ul a {
+  color: $color_black_90;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+header ul a:hover {
+  text-decoration: none;
+  color: $color_black_90;
+}
+
+header ul a:hover span {
+  color: $color_blue_100;
+}
+
+.post-item h2 a {
+  color: $color_black_90;
+}
+
+.post-item h2 a:hover {
+  color: $color_blue_100;
+  text-decoration: none;
+}
+
+blockquote {
+  background-color: rgba(102,128,153,0.05);
+}
+
+blockquote p {
+    font-weight: 300;
+}
+
+pre code {
+  padding: 18px 28px !important;
+}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        "layout",
-        "syntax-highlighting"
-;
+//@import
+//        "base",
+//        "layout",
+//        "syntax-highlighting"
+//;

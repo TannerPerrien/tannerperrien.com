@@ -1,0 +1,27 @@
+---
+title: Blog
+permalink: /blog/
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Tanner Perrien</a></h1>
+    </header>
+    <div class="container-fluid">
+      <div class="col-md-6">
+        {% for post in site.posts %}
+          <div class="post-item">
+            <h2>
+              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
+            <p>{{ post.excerpt }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

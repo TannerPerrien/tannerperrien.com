@@ -1,23 +1,32 @@
 ---
-layout: default
+title: Tanner Perrien
 ---
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+    <style type="text/css">
+      body {
+        background-color: #111 !important;
+        background: url('static/bg.jpg') no-repeat center top;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Tanner Perrien</a></h1>
 
-<div class="home">
+      <ul class="list-inline">
+          <li><a href="/blog">&gt; <span>Blog</span></a></li>
+        </ul>
+    </header>
 
-  <h1 class="page-heading">Posts</h1>
+    <div class="page-content">
+      <div class="wrapper">
+        
+      </div>
+    </div>
+  </body>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+</html>

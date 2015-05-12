@@ -3,14 +3,19 @@ layout: post
 title:  "Deep Linking in Android"
 date:   2015-04-18 18:05:35
 ---
-Apps that are able to natively open external URLs make for a considerably better user experience. Unfortunately, end-to-end implementation in Android does not come without a handful of hurdles to jump. Here we'll drill through all the steps required to create a robust deep linking solution.
+Apps that are able to natively open external URLs make for a considerably better user experience. A working end-to-end implementation in Android requires getting past a handful of handful of hurdles. Here we'll drill through all the steps required to create a robust deep linking solution.
+
+## Sample App
+Want to see this tutorial in action? Clone the project here: [https://github.com/TannerPerrien/android-deep-link-example][8]
 
 ## Determine the Entry Point
 You need to determine which of your app's Activities will be responsible for handling your app's links. Which Activity is chosen depends on how your Android app is setup. The [launcher][1] Activity is an ideal candidate, so let's take that route.
 
 > **Note:** Your launcher activity will have an `<intent-filter>` with the `android.intent.category.LAUNCHER` category, like this:
-> ```xml
-> <activity
+
+>```xml
+<!-- AndroidManifext.xml -->
+<activity
     android:name=".MainActivity"
     android:label="@string/app_name">
     <intent-filter>
@@ -18,7 +23,7 @@ You need to determine which of your app's Activities will be responsible for han
         <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
 </activity>
-> ```
+```
 
 If you have multiple Activities in your app, you may choose a different one to handle deep links, but keep in mind that users will then enter your app on a different path compared to the one they would enter on if they open the app via the app drawer or launcher.
 
@@ -43,18 +48,20 @@ In order for links to reach your app, something needs to tell Android that your 
 
 An intent filter is configurable with actions, categories, and data. In order for your deep link intent filter to work properly you will need the following:
 
-**Action** `android.intent.action.VIEW` ([javadoc][6])
+**Action** `android.intent.action.VIEW` ([javadoc][6])  
 Action used for intents that handle displaying data to the user.
 
-**Category** `android.intent.category.DEFAULT` ([javadoc][2])
+**Category** `android.intent.category.DEFAULT` ([javadoc][2])  
 Category allowing implicit intents to resolve to this filter.
-> **Note:** In order to receive implicit intents, you must include the CATEGORY_DEFAULT category in the intent filter. The methods startActivity() and startActivityForResult() treat all intents as if they declared the CATEGORY_DEFAULT category. If you do not declare this category in your intent filter, no implicit intents will resolve to your activity.
 
-**Category** `android.intent.category.BROWSABLE` ([javadoc][3]) 
+> **Note:** In order to receive implicit intents, you must include the CATEGORY\_DEFAULT category in the intent filter. The methods startActivity() and startActivityForResult() treat all intents as if they declared the CATEGORY\_DEFAULT category. If you do not declare this category in your intent filter, no implicit intents will resolve to your activity.
+
+**Category** `android.intent.category.BROWSABLE` ([javadoc][3])  
 Category allowing intents triggered in web browsers and email clients to resolve to this filter.
 
-**Data** ([javadoc][7])
+**Data** ([javadoc][7])  
 This is where you describe the *scheme*, *host*, and *path* for your links.
+
 > **Note:** The attributes of the `<data>` element are optional, but linear dependencies require you to approach this a certain way:
 > * If a scheme is not specified, the host is ignored.
 > * If a host is not specified, the port is ignored.
@@ -66,18 +73,20 @@ To build a robust deep linking mechanism you can provide a `<data>` element to h
 ```xml
 <data android:scheme="http" android:host="tannerperrien.com" />
 ```
-*Pro:* gives your app the chance to handle a link in an email.
+*Pro:* gives your app the chance to handle a link in an email.  
 *Con:* the user is prompted with a choice: "do you want to open this link in **your-app** or **Chrome** or **every-other-app-that-handles-urls-like-this**?"
 
 ### Filter links pointing to your app
 ```xml
 <data android:scheme="tannerperrien" />
 ```
-*Pro:* the intent will open your app immediately without requiring any user interaction.
+*Pro:* the intent will open your app immediately without requiring any user interaction.  
 *Con:* these types of links are really only useful for situations where you are exposing app entry points to other apps, push notifications, and so on.
 
 ### The finished `<Activity>` and `<intent-filter>`
+
 When done, your `<Activity>` might look like this:
+
 ```xml
 <activity
     android:name=".MainActivity"
@@ -257,21 +266,24 @@ Now that everything is in place it's time to test a few links and ensure they wo
 
 Using `adb` you can send intents to your test device the same way a web page might. The command is drafted like this:
 
-    adb shell am start -a android.intent.action.VIEW -d "<YOUR-URI>"
+```bash
+adb shell am start -a android.intent.action.VIEW -d "<YOUR-URI>"
+```
 
 ### Examples
 A website link can be sent like this:
 
-    adb shell am start -a android.intent.action.VIEW -d "http://tannerperrien.com/settings"
+```bash
+adb shell am start -a android.intent.action.VIEW -d "http://tannerperrien.com/settings"
+```
 
 An app link can be sent like this:
 
-    adb shell am start -a android.intent.action.VIEW -d "tannerperrien:///settings"
+```bash
+adb shell am start -a android.intent.action.VIEW -d "tannerperrien:///settings"
+```
 
 > **Note:** in the second example the third forward slash is used to start the `path` portion of the URI. Without this, *settings* would be treated as the host name rather than the path. The example `DeepLinker` class provided in this tutorial configures the `UriMatcher` to only look at paths. In other words, it does not give any consideration to the **host** or **authority**, as the `UriMatcher` calls it.
-
-## Sample App
-Want to see this tutorial in action? Clone the project here: https://github.com/TannerPerrien/android-deep-link-example
 
 [1]:http://developer.android.com/training/basics/activity-lifecycle/starting.html#launching-activity
 [2]:http://developer.android.com/reference/android/content/Intent.html#CATEGORY_DEFAULT
@@ -280,3 +292,4 @@ Want to see this tutorial in action? Clone the project here: https://github.com/
 [5]:http://developer.android.com/guide/components/intents-filters.html
 [6]:http://developer.android.com/reference/android/content/Intent.html#ACTION_VIEW
 [7]:http://developer.android.com/guide/topics/manifest/data-element.html
+[8]:https://github.com/TannerPerrien/android-deep-link-example
