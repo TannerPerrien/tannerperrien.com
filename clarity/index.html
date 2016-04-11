@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <style>
+    /*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+/*  background-color: #fff;*/
+  border: 1px solid #fff;
+}
+
+/*
+ * Base structure
+ */
+html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+body {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+h1 {
+  text-align: center;
+  margin-top: 60px;
+}
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 700px;
+  }
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #444;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+    </style>
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Clarity</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Overview</a></li>
+                  <li><a href="#privacy">Privacy</a></li>
+                  <li><a href="#uninstall">Uninstall</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="inner cover">
+            <h1 class="cover-heading">Get Inbox Clarity</h1>
+            <p class="lead">Spend less time being distracted by chaotic waste in your inbox and more time being productive reading the email you care about.</p>
+            <p class="lead text-center">
+              <a href="https://script.google.com/macros/s/AKfycbzvETQrrOOnL3FdJDH1LrxGSNQP1N1sDWaeg4lV_nrrVE7xc72U/exec" class="btn btn-lg btn-primary">Get Results</a>
+            </p>
+          </div>
+          <div class="inner cover">
+            <h1 class="cover-heading">How Clarity Works</h1>
+            <p class="lead">
+              Clarity analyzes your inbox and groups mail into two major groups: mail you receive <strong>directly</strong> and mail you <strong>indirectly</strong>. These groups are each broken down further by <strong>read</strong> mail and <strong>unread</strong> mail. Suggestions based on this data discuss how you can bring comprehensible context to the tool you spend hours in each week.
+            </p>
+            <div class="bs-callout bs-callout-danger">
+              <h4>Caveats</h4>
+              <ul>
+                <li>
+                  <p>If you open messages as a means of archiving or have filters that <strong>automatically mark mail as read</strong>, your Clarity report will not reflect the most accurate results and tips. To make this work better for you, archive mail without opening the message thread and ensure you don't have any filters that automatically mark mail as read.</p>
+                </li>
+                <li>
+                  <p>Clarity does not introspect message labels and treats all mail the same whether it is archived or not. If you currently <strong>auto-label</strong> or <strong>auto-archive</strong> your mail, please note that the report may define senders/receivers you are already appropriately handling!</p>
+                </li>
+              </ul>
+            </div>
+            <div class="bs-callout bs-callout-primary">
+              <h4>Inbox Zero Hero?</h4>
+              <p>If you are already an <strong>Inbox Zero</strong> hero, great! Clarity can still give you insightful tips on how you can organize your inbox in ways that will save you time.</p>
+            </div>
+          </div>
+          <div class="inner cover" id="privacy">
+            <h1 class="cover-heading">Privacy</h1>
+            <p class="lead">Clarity uses Google Apps Script to analyze your email and generate a report. The script is run inside a secure sandbox and executed with your own Google account. The results are stored in your Google Drive so you can easily revisit the results. No data leaves your account. The only data stored as a result of using this tool is a single file in your Google Drive, which you can simply delete if you are done using this tool.</p>
+          </div>
+          <div class="inner cover" id="uninstall">
+            <h1 class="cover-heading">Uninstall</h1>
+            <p class="lead">No commitments here. A few simple steps to say goodbye.</p>
+            <ol>
+              <li>
+                <p>When you signed up for Clarity you received an email with uninstallation instructions and a link to uninstall the script. Please start the uninstallation by clicking the "Uninstall Clarity" button. When the URL opens in your web browser click the "Uninstall" button.</p>
+              </li>
+              <li>
+                <p>You will now need to review the access that you granted to Clarity when you first installed the script. Visit your Google account page in your web browser https://www.google.com/settings/account and choose "Security" on the left and then click "Edit" in order to view the authorized applications. From this list you will be able to revoke the access for Clarity.</p>
+              </li>
+              <li>
+                <p>Lastly, simply delete the file in your Google Docs/Drive that is used for storing the Clarity data: "Clarity Data - Do Not Delete." Make sure to empty the item from your Docs/Drive Trash to permanently delete the file.</p>
+              </li>
+            </ol>
+          </div>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Created by <a href="http://www.tannerperrien.com">Tanner Perrien</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>
+      $( document ).ready(function() {
+        $('.nav a').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
