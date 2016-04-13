@@ -4,6 +4,6 @@ baseurl: ""
 url: "http://tannerperrien.com"
 
 # Build settings
-highlighter: pygments
+highlighter: rouge
 markdown: redcarpet
 permalink: /:title/
